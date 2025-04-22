@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		F7177B332DB0C8FC009D34BA /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F7177B322DB0C8FC009D34BA /* AVFoundation.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		F7177A8F2DB0B846009D34BA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,14 +31,10 @@
 		F7177A7E2DB0B842009D34BA /* PalPlanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PalPlanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7177A8E2DB0B846009D34BA /* PalPlannerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PalPlannerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F7177A982DB0B846009D34BA /* PalPlannerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PalPlannerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7177B322DB0C8FC009D34BA /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		F7177A802DB0B842009D34BA /* PalPlanner */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = PalPlanner;
-			sourceTree = "<group>";
-		};
 		F7177A912DB0B846009D34BA /* PalPlannerTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = PalPlannerTests;
@@ -45,6 +45,11 @@
 			path = PalPlannerUITests;
 			sourceTree = "<group>";
 		};
+		F7177B062DB0B920009D34BA /* PalPlanner */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = PalPlanner;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F7177B332DB0C8FC009D34BA /* AVFoundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,9 +81,10 @@
 		F7177A752DB0B842009D34BA = {
 			isa = PBXGroup;
 			children = (
-				F7177A802DB0B842009D34BA /* PalPlanner */,
+				F7177B062DB0B920009D34BA /* PalPlanner */,
 				F7177A912DB0B846009D34BA /* PalPlannerTests */,
 				F7177A9B2DB0B846009D34BA /* PalPlannerUITests */,
+				F7177B312DB0C8FC009D34BA /* Frameworks */,
 				F7177A7F2DB0B842009D34BA /* Products */,
 			);
 			sourceTree = "<group>";
@@ -90,6 +97,14 @@
 				F7177A982DB0B846009D34BA /* PalPlannerUITests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F7177B312DB0C8FC009D34BA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F7177B322DB0C8FC009D34BA /* AVFoundation.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -108,7 +123,7 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				F7177A802DB0B842009D34BA /* PalPlanner */,
+				F7177B062DB0B920009D34BA /* PalPlanner */,
 			);
 			name = PalPlanner;
 			packageProductDependencies = (
