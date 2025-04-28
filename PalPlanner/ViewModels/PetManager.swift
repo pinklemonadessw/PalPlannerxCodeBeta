@@ -74,9 +74,18 @@ class PetManager: ObservableObject {
         objectWillChange.send()
     }
     
-    func feed() {
-        energy = min(1.0, energy + 0.2)
-        updateMood()
+    func feed() -> Bool {
+        // Check if a food item is equipped
+        if equippedItems[.food] != nil {
+            energy = min(1.0, energy + 0.2)
+            updateMood()
+            return true
+        }
+        return false
+    }
+    
+    func hasFoodEquipped() -> Bool {
+        return equippedItems[.food] != nil
     }
     
     func play() {

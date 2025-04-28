@@ -14,8 +14,10 @@ struct AddTaskView: View {
     @State private var points = 10
     @State private var dueTime = Date()
     @State private var gracePeriod = 30
+    @State private var selectedNotificationTime: NotificationTime = .fifteenMinutesBefore
     let selectedDate: Date
     @Environment(\.presentationMode) var presentationMode
+    @StateObject private var notificationManager = NotificationManager.shared
     
     private let gracePeriodOptions = [15, 30, 60, 120]
     
@@ -38,6 +40,21 @@ struct AddTaskView: View {
                     
                     Text("Date: \(formattedDate)")
                         .foregroundColor(.secondary)
+                }
+                
+                Section(header: Text("Notifications")) {
+                    Picker("Reminder", selection: $selectedNotificationTime) {
+                        ForEach(NotificationTime.allCases) { option in
+                            Text(option.rawValue).tag(option)
+                        }
+                    }
+                    .pickerStyle(DefaultPickerStyle())
+                    
+                    if selectedNotificationTime != .none {
+                        Text("You will be notified \(selectedNotificationTime.rawValue.lowercased())")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
+                    }
                 }
                 
                 Section(header: Text("Task Deadline Info")) {
@@ -67,6 +84,10 @@ struct AddTaskView: View {
                 }
                 .disabled(title.isEmpty)
             )
+            .onAppear {
+                // Request notification permissions if needed
+                notificationManager.requestAuthorization()
+            }
         }
     }
     
@@ -87,6 +108,12 @@ struct AddTaskView: View {
         )
         
         taskManager.addTask(newTask)
+        
+        // Schedule notification if selected
+        if selectedNotificationTime != .none {
+            notificationManager.scheduleTaskNotification(for: newTask, time: selectedNotificationTime)
+        }
+        
         presentationMode.wrappedValue.dismiss()
     }
 }

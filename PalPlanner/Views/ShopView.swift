@@ -138,9 +138,16 @@ struct ShopItemView: View {
                     .fill(Color.gray.opacity(0.1))
                     .frame(height: 100)
                 
-                Image(systemName: item.imageName)
-                    .font(.system(size: 40))
-                    .foregroundColor(.purple)
+                if item.isSystemImage {
+                    Image(systemName: item.imageName)
+                        .font(.system(size: 40))
+                        .foregroundColor(.purple)
+                } else {
+                    Image(item.imageName)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 60, height: 60)
+                }
             }
             
             Text(item.name)
@@ -220,9 +227,16 @@ struct InventoryItemView: View {
                     .fill(Color.gray.opacity(0.1))
                     .frame(height: 100)
                 
-                Image(systemName: item.imageName)
-                    .font(.system(size: 40))
-                    .foregroundColor(.purple)
+                if item.isSystemImage {
+                    Image(systemName: item.imageName)
+                        .font(.system(size: 40))
+                        .foregroundColor(.purple)
+                } else {
+                    Image(item.imageName)
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 60, height: 60)
+                }
             }
             
             Text(item.name)
